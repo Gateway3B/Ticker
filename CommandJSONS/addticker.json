@@ -1,0 +1,12 @@
+{
+    "name": "addticker",
+    "description": "Add ticker to favorites list. (Max 10)",
+    "options": [
+        {
+            "name": "ticker",
+            "description": "Ticker to search for.",
+            "type": 3,
+            "required": true
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ticker",
+  "version": "1.0.0",
+  "description": "Discord.js bot for providing stock prices from ticker symbols.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "mongoose": "^5.12.14",
+    "yahoo-finance": "^0.3.7"
+  }
+}

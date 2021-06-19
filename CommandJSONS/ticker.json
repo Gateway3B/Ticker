@@ -1,0 +1,12 @@
+{
+    "name": "ticker",
+    "description": "Get ticker information.",
+    "options": [
+        {
+            "name": "ticker",
+            "description": "Ticker to search for.",
+            "type": 3,
+            "required": true
+        }
+    ]
+}
