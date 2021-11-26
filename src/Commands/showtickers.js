@@ -1,10 +1,11 @@
-const Discord = require('discord.js');
+const {MessageEmbed} = require('discord.js');
+const {PrimaryColor} = require('../../config.json')
 var yahooFinance = require('yahoo-finance');
 
 module.exports = {
     name: 'showtickers',
     async execute(interaction, Favorite) {
-        const embed = new Discord.MessageEmbed();
+        const embed = new MessageEmbed();
 
         var tickers = '';
         var prices = '';
@@ -14,9 +15,10 @@ module.exports = {
 
         if(favorites.length == 0) {
             embed.setTitle("Favorites List Empty. Use /addticker")
-                .setColor(0x30972D);
+                .setColor(PrimaryColor);
             
-            return [embed];
+            interaction.reply({embeds: [embed]});
+            return;
         }
 
         for(var i = 0; i < favorites.length; i++)
@@ -24,12 +26,16 @@ module.exports = {
             const quote = await yahooFinance.quote({
                 symbol: favorites[i].ticker,
                 modules: [ 'price' ]
-            }).catch((err) => {
+            }).catch(() => {});
+
+            if(!quote)
+            {
                 embed.setTitle("Error Recieving Data From Yahoo")
-                .setColor(0x30972D);
+                .setColor(PrimaryColor);
             
-                return [embed];
-            });
+                interaction.reply({embeds: [embed]});
+                return;
+            }
     
             tickers += quote.price.symbol + "\n";
             prices += '$' + parseFloat(quote.price.regularMarketPrice).toFixed(2) + '\n';
@@ -37,14 +43,13 @@ module.exports = {
         }
 
         embed.setTitle("Favorite Tickers List")
-            .setColor(0x30972D)
+            .setColor(PrimaryColor)
             .addFields(
                 { name: 'Ticker', value: tickers, inline: true },
                 { name: 'Price', value: prices, inline: true },
                 { name: 'High/Low', value: highsLows, inline: true },
             );
 
-        return [embed];
-
+        interaction.reply({embeds: [embed]});
     }
 }
