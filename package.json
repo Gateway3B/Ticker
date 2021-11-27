@@ -4,14 +4,19 @@
   "description": "Discord.js bot for providing stock prices from ticker symbols.",
   "main": "index.js",
   "scripts": {
-    "test": "node src/index.js test",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "create": "node src/helpers/CommandFunctions.js create",
+    "createTest": "node src/helpers/CommandFunctions.js create test",
+    "delete": "node src/helpers/CommandFunctions.js delete",
+    "deleteTest": "node src/helpers/CommandFunctions.js delete test"
   },
   "author": "Gateway3B",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.3.1",
     "mongoose": "^5.12.14",
+    "sharp": "^0.29.3",
+    "vega": "^5.21.0",
     "yahoo-finance": "^0.3.7"
   }
 }
